@@ -1,0 +1,37 @@
+<div class="index_container">
+
+  <p id="notice"><%= notice %></p>
+
+  <h1>Posts</h1>
+
+  <table class="index_table">
+    <thead>
+      <tr>
+        <th>Icon</th>
+        <th>Name</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr class="body_tr">
+          <td>
+            <% if post.user.image? %>
+              <%= image_tag post.user.image.url, class: 'img' %><br>
+            <% else %>
+              <%= image_tag 'icon.png' , class: 'img' %><br>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post.user.username, user_path(post.user), class: 'color' %>
+          </td>
+          <td>
+            <%= simple_format link_to post.body, post_path(post), class: 'color' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

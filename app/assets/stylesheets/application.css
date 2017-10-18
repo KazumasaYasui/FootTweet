@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@charset “UTF-8”;
+
+/* CSS Document */
+
+
+/* -----------------------------------------------
+* reset
+* ----------------------------------------------- */
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* -----------------------------------------------
+* Basic_setting
+* ----------------------------------------------- */
+
+body{
+  /*font-family: 'Verdana',sans-serif;*/
+  background-color: lightskyblue;
+  color: #333;
+}
+
+.back_color{
+  /*background-color: lightskyblue;*/
+  padding-bottom: 50px;
+  /*opacity: 0.9;*/
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+h1{
+  text-align: center;
+  padding:10px 0 20px;
+}
+
+h2{
+  text-align: center;
+  padding: 10px 0 20px;
+}
+
+.container{
+  width: 800px;
+  margin: 50px auto;
+}
+
+.clear{
+  clear: both;
+}
+
+
+header{
+  padding: 10px 0 10px;
+}
+
+.header_left{
+  float: left;
+}
+
+.header_right{
+  float: right;
+}
+
+.logo{
+  font-size: 36px;
+}
+
+
+.index_container, .show_container, .mypage_container,
+.new_caontainer, .edit_container, .profile_edit_container,
+.signup_container, .login_container, .new_password_container,
+.userpage_container{
+  margin: 20px;
+}
+
+.index_table{
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.img{
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;;
+}
+
+.color{
+  color: #fff;
+}

@@ -1,0 +1,33 @@
+<div class="mypage_container">
+
+  <h1>My Page</h1>
+
+  <ul class="mypage_profile_box">
+    <% if @user.image? %>
+      <li>アイコン:<%= image_tag @user.image.url, class: 'img' %></li>
+    <% else %>
+      <li>アイコン:<%= image_tag 'icon.png' , class: 'img' %></li>
+    <% end %>
+    <li>ユーザー名:<%= @user.username %></li>
+    <li>E-mail:<%= @user.email %></li>
+    <% if @user.profile? %>
+      <li>プロフィール:<%= @user.profile %></li>
+    <% else %>
+      <li>プロフィール:設定されていません</li>
+    <% end %>
+    <li>投稿数:<%= @user.posts.count %></li>
+  </ul>
+
+  <h2>My Posts</h2>
+  <% @user.posts.reverse.each do |post| %>
+    <div class="mypage_posts_box">
+      <span>
+        <%= link_to post.user.username, user_path(post.user) %>
+      </span>
+      <span>
+        <%= post.body %>
+      </span>
+    </div>
+  <% end %>
+
+</div>

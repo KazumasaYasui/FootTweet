@@ -1,0 +1,164 @@
+body {
+  background-color: lightskyblue;
+  color: #333;
+  margin: 0px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  // background-image: url("/back_img.jpg");
+  // background-position: left 0; 
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #fff;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #333;
+    opacity: 0.7;
+    border-radius: 5px;
+  }
+}
+
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+  .field_size{
+    width: 400px;
+    height: 100px;
+  }
+  .actions{
+    text-align: center;
+  }
+}
+
+#notice {
+  color: green;
+  text-align: center;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+label {
+  display: block;
+}
+
+
+.index_table{
+  margin: 0 auto;
+  border-collapse: collapse; 
+
+  th{
+    padding-bottom: 15px;
+  }
+
+  .body_tr{
+    border-bottom: 1px solid gray ;
+
+
+    td {
+      padding: 10px;
+    }
+  }
+}
+
+
+.show_box{
+  width: 50%; 
+  margin:10px auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.show_link_box{
+  text-align: center;
+}
+
+.mypage_profile_box, .userpage_box{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.mypage_posts_box{
+  width: 50%;
+  margin: 0 auto;
+
+  span{
+    padding-right: 10px;
+  }
+}
+
+
+.new_box, .edit_box{
+  width: 50%;
+  margin: 0 auto;
+  .link_box{
+    text-align: right;
+  }
+}
+
+
+.profile_edit_box, .signup_box, .login_box, .new_password_box{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.destroy_account_box{
+  text-align: center;
+}
+
+
+
+
+
+
+
+

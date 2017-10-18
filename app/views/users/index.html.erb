@@ -1,0 +1,18 @@
+<div class="userpage_container">
+
+  <h1>User Page</h1>
+
+  <% @users.each do |user| %>
+    <div class="userpage_box">
+      <% if user.image? %>
+        <span><%= image_tag user.image.url, class: 'img' %></span>
+      <% else %>
+        <span><%= image_tag 'icon.png' , class: 'img' %></span>
+      <% end %>
+      <span>
+        <%= link_to user.username, user_path(user) %>
+      </span>
+    </div>
+  <% end %>
+
+</div>
