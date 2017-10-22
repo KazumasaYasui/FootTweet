@@ -5,10 +5,12 @@
   <p id="notice"><%= notice %></p>
   <div class="show_box">
     <strong>アイコン:</strong>
-    <% if @post.user.image? %>
-      <%= image_tag @post.user.image.url, class: 'img' %><br>
-    <% else %>
-      <%= image_tag 'icon.png' , class: 'img' %><br>
+    <%= link_to user_path(@post.user) do %>
+      <% if @post.user.image? %>
+        <%= image_tag @post.user.image.url, class: 'img' %><br>
+      <% else %>
+        <%= image_tag 'icon.png' , class: 'img' %><br>
+      <% end %>
     <% end %>
     <strong>　名前　:</strong>
     <%= link_to @post.user.username, user_path(@post.user) %><br>
@@ -16,7 +18,19 @@
     <%= @post.body %><br>
     <strong>投稿日時:</strong>
     <%= @post.created_at.in_time_zone('Tokyo')
-        .strftime("%Y年%m月%d日 %H時%M分") %>
+        .strftime("%Y年%m月%d日 %H時%M分") %><br>
+    <strong>フォロー:</strong>
+    <% if @post.user.followed_by? current_user %>
+      <%= link_to fa_icon("user", class: 'follow_true' ), user_relationships_path(@post.user), method: :delete %><br>
+    <% else %>
+      <%= link_to fa_icon("user-plus", class: 'follow_false' ), user_relationships_path(@post.user), method: :post %><br>
+    <% end %>
+    <strong>いいね！:</strong>
+    <% if @post.favorited_by? current_user %>
+      <%= link_to fa_icon("heart", class: 'favorite_true' ) , post_favorites_path(@post), method: :delete %>
+    <% else %>
+      <%= link_to fa_icon("heart", class: 'favorite_false' ) , post_favorites_path(@post), method: :post %>
+    <% end %>
   </div>
 
   <div class="show_link_box">

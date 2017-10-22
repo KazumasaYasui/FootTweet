@@ -1,4 +1,4 @@
-50.times do |i|
+10.times do |i|
   User.seed_once(:id) do |user|
     user.id = i+1
     user.username = "#{i+1}番さん"

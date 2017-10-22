@@ -12,11 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'font-awesome'
  */
 
 @charset “UTF-8”;
 
-/* CSS Document */
+
+/* CSS Document 
 
 
 /* -----------------------------------------------
@@ -29,100 +31,4 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-
-/* -----------------------------------------------
-* Basic_setting
-* ----------------------------------------------- */
-
-body{
-  /*font-family: 'Verdana',sans-serif;*/
-  background-color: lightskyblue;
-  color: #333;
-}
-
-.back_color{
-  /*background-color: lightskyblue;*/
-  padding-bottom: 50px;
-  /*opacity: 0.9;*/
-}
-
-a{
-  text-decoration: none;
-}
-
-ul{
-  list-style: none;
-}
-
-h1{
-  text-align: center;
-  padding:10px 0 20px;
-}
-
-h2{
-  text-align: center;
-  padding: 10px 0 20px;
-}
-
-.container{
-  width: 800px;
-  margin: 50px auto;
-}
-
-.clear{
-  clear: both;
-}
-
-
-header{
-  padding: 10px 0 10px;
-}
-
-.header_left{
-  float: left;
-}
-
-.header_right{
-  float: right;
-}
-
-.logo{
-  font-size: 36px;
-}
-
-
-.index_container, .show_container, .mypage_container,
-.new_caontainer, .edit_container, .profile_edit_container,
-.signup_container, .login_container, .new_password_container,
-.userpage_container{
-  margin: 20px;
-}
-
-.index_table{
-  margin: 0 auto;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.img{
-  border-radius: 10px;
-  width: 100px;
-  height: 100px;;
-}
-
-.color{
-  color: #fff;
 }

@@ -4,14 +4,21 @@
 
   <% @users.each do |user| %>
     <div class="userpage_box">
-      <% if user.image? %>
-        <span><%= image_tag user.image.url, class: 'img' %></span>
-      <% else %>
-        <span><%= image_tag 'icon.png' , class: 'img' %></span>
+      <%= link_to user_path(user) do %>
+        <% if user.image? %>
+          <span><%= image_tag user.image.url, class: 'img' %></span>
+        <% else %>
+          <span><%= image_tag 'icon.png' , class: 'img' %></span>
+        <% end %>
       <% end %>
       <span>
         <%= link_to user.username, user_path(user) %>
       </span>
+      <% if user.followed_by? current_user %>
+        <span><%= link_to fa_icon("user", class: 'follow_true' ), user_relationships_path(user), method: :delete %></span>
+        <% else %>
+        <span><%= link_to fa_icon("user-plus", class: 'follow_false' ), user_relationships_path(user), method: :post %></span>
+      <% end %>
     </div>
   <% end %>
 

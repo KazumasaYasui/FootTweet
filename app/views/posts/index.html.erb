@@ -10,6 +10,8 @@
         <th>Icon</th>
         <th>Name</th>
         <th>Body</th>
+        <th>Like</th>
+        <th>Follow</th>
       </tr>
     </thead>
 
@@ -17,17 +19,33 @@
       <% @posts.each do |post| %>
         <tr class="body_tr">
           <td>
-            <% if post.user.image? %>
-              <%= image_tag post.user.image.url, class: 'img' %><br>
-            <% else %>
-              <%= image_tag 'icon.png' , class: 'img' %><br>
+            <%= link_to user_path(post.user) do %>
+              <% if post.user.image? %>
+                <%= image_tag post.user.image.url, class: 'img' %><br>
+              <% else %>
+                <%= image_tag 'icon.png' , class: 'img' %><br>
+              <% end %>
             <% end %>
           </td>
           <td>
-            <%= link_to post.user.username, user_path(post.user), class: 'color' %>
+            <%= link_to post.user.username, user_path(post.user) %>
           </td>
           <td>
-            <%= simple_format link_to post.body, post_path(post), class: 'color' %>
+            <%= simple_format link_to post.body, post_path(post) %>
+          </td>
+          <td>
+            <% if post.favorited_by? current_user %>
+              <%= link_to fa_icon("heart", class: 'favorite_true' ), post_favorites_path(post), method: :delete %>
+            <% else %>
+              <%= link_to fa_icon("heart", class: 'favorite_false' ), post_favorites_path(post), method: :post %>
+            <% end %>
+          </td>
+          <td>
+            <% if post.user.followed_by? current_user %>
+              <%= link_to fa_icon("user", class: 'follow_true' ), user_relationships_path(post.user), method: :delete %>
+            <% else %>
+              <%= link_to fa_icon("user-plus", class: 'follow_false' ), user_relationships_path(post.user), method: :post %>
+            <% end %>
           </td>
         </tr>
       <% end %>

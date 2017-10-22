@@ -28,21 +28,27 @@
     </li>
     <li>
       <%= link_to favorites_user_path(@user) do %>
-          いいね一覧:<%= @user.favorites.count %>
-      <% end %>
-    </li>
-    <li>
-      <% if @user.followed_by? current_user %>
-        <%= link_to fa_icon("user", class: 'follow_true' ), user_relationships_path(@user), method: :delete %>
-      <% else %>
-        <%= link_to fa_icon("user-plus", class: 'follow_false' ), user_relationships_path(@user), method: :post %>
+        いいね一覧:<%= @user.favorites.count %>
       <% end %>
     </li>
   </ul>
 
-  <h2>My Posts</h2>
-  <% @user.posts.reverse.each do |post| %>
-    <div class="mypage_posts_box">
+  <h2>My Favorites</h2>
+
+  <% if @user.favorites.empty? %>
+    <div>まだお気に入りされた投稿はありません。</div>
+  <% end %>
+  <% @user.favorites.map {|f| f.post}.each do |post| %>
+    <div class="mypage_favorites_box">
+      <div>
+        <%= link_to user_path(post.user) do %>
+          <% if post.user.image? %>
+            <%= image_tag post.user.image.url, class: 'img' %><br>
+          <% else %>
+            <%= image_tag 'icon.png' , class: 'img' %><br>
+          <% end %>
+        <% end %>
+      </div>
       <span>
         <%= link_to post.user.username, user_path(post.user) %>
       </span>
