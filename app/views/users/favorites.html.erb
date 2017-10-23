@@ -9,7 +9,7 @@
       <li>アイコン:<%= image_tag 'icon.png' , class: 'img' %></li>
     <% end %>
     <li>ユーザー名:<%= @user.username %></li>
-    <li>E-mail:<%= @user.email %></li>
+    <li>Eメール:<%= @user.email %></li>
     <% if @user.profile? %>
       <li>プロフィール:<%= @user.profile %></li>
     <% else %>
@@ -38,24 +38,37 @@
   <% if @user.favorites.empty? %>
     <div>まだお気に入りされた投稿はありません。</div>
   <% end %>
-  <% @user.favorites.map {|f| f.post}.each do |post| %>
-    <div class="mypage_favorites_box">
-      <div>
-        <%= link_to user_path(post.user) do %>
-          <% if post.user.image? %>
-            <%= image_tag post.user.image.url, class: 'img' %><br>
-          <% else %>
-            <%= image_tag 'icon.png' , class: 'img' %><br>
-          <% end %>
+  <div class="mypage_favorites_box">
+    <table class="mypage_table">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.favorites.map {|f| f.post}.each do |post| %>
+        <tr class="body_tr">
+          <td>
+            <%= link_to user_path(post.user) do %>
+              <% if post.user.image? %>
+                <%= image_tag post.user.image.url, class: 'img' %>
+              <% else %>
+                <%= image_tag 'icon.png' , class: 'img' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post.user.username, user_path(post.user) %>
+          </td>
+          <td>
+            <%= simple_format link_to post.body, post_path(post) %>
+          </td>
+        </tr>
         <% end %>
-      </div>
-      <span>
-        <%= link_to post.user.username, user_path(post.user) %>
-      </span>
-      <span>
-        <%= link_to post.body, post_path(post) %>
-      </span>
-    </div>
-  <% end %>
+      </tbody>
+    </table>
+  </div>
 
 </div>

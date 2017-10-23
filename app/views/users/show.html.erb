@@ -9,7 +9,7 @@
       <li>アイコン:<%= image_tag 'icon.png' , class: 'img' %></li>
     <% end %>
     <li>ユーザー名:<%= @user.username %></li>
-    <li>E-mail:<%= @user.email %></li>
+    <li>Eメール:<%= @user.email %></li>
     <% if @user.profile? %>
       <li>プロフィール:<%= @user.profile %></li>
     <% else %>
@@ -33,23 +33,48 @@
     </li>
     <li>
       <% if @user.followed_by? current_user %>
+        <p class="follow_text">フォロー中</p>
         <%= link_to fa_icon("user", class: 'follow_true' ), user_relationships_path(@user), method: :delete %>
       <% else %>
+        <p class="no_follow_text">未フォロー</p>
         <%= link_to fa_icon("user-plus", class: 'follow_false' ), user_relationships_path(@user), method: :post %>
       <% end %>
     </li>
   </ul>
 
   <h2>My Posts</h2>
-  <% @user.posts.reverse.each do |post| %>
+
     <div class="mypage_posts_box">
-      <span>
-        <%= link_to post.user.username, user_path(post.user) %>
-      </span>
-      <span>
-        <%= link_to post.body, post_path(post) %>
-      </span>
+      <table class="mypage_table">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.posts.reverse.each do |post| %>
+          <tr class="body_tr">
+            <td>
+              <%= link_to user_path(post.user) do %>
+                <% if post.user.image? %>
+                  <%= image_tag post.user.image.url, class: 'img' %>
+                <% else %>
+                  <%= image_tag 'icon.png' , class: 'img' %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to post.user.username, user_path(post.user) %>
+            </td>
+            <td>
+              <%= simple_format link_to post.body, post_path(post) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
 
 </div>

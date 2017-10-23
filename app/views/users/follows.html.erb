@@ -9,7 +9,7 @@
       <li>アイコン:<%= image_tag 'icon.png' , class: 'img' %></li>
     <% end %>
     <li>ユーザー名:<%= @user.username %></li>
-    <li>E-mail:<%= @user.email %></li>
+    <li>Eメール:<%= @user.email %></li>
     <% if @user.profile? %>
       <li>プロフィール:<%= @user.profile %></li>
     <% else %>
@@ -38,21 +38,33 @@
   <% if @user.followings.empty? %>
     <div>まだフォローしていません。</div>
   <% end %>
-  <% @user.followings.each do |user| %>
-    <div class="mypage_follows_box">
-      <div>
-        <%= link_to user_path(user) do %>
-          <% if user.image? %>
-            <%= image_tag user.image.url, class: 'img' %><br>
-          <% else %>
-            <%= image_tag 'icon.png' , class: 'img' %><br>
-          <% end %>
+  <div class="mypage_follows_box">
+    <table class="mypage_table">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user.followings.each do |user| %>
+        <tr class="body_tr">
+          <td>
+            <%= link_to user_path(user) do %>
+              <% if user.image? %>
+                <%= image_tag user.image.url, class: 'img' %>
+              <% else %>
+                <%= image_tag 'icon.png' , class: 'img' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user.username, user_path(user) %>
+          </td>
+        </tr>
         <% end %>
-      </div>
-      <span>
-        <%= link_to user.username, user_path(user) %>
-      </span>
-    </div>
-  <% end %>
+      </tbody>
+    </table>
+  </div>
 
 </div>

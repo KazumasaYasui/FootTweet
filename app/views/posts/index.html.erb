@@ -21,9 +21,9 @@
           <td>
             <%= link_to user_path(post.user) do %>
               <% if post.user.image? %>
-                <%= image_tag post.user.image.url, class: 'img' %><br>
+                <%= image_tag post.user.image.url, class: 'img' %>
               <% else %>
-                <%= image_tag 'icon.png' , class: 'img' %><br>
+                <%= image_tag 'icon.png' , class: 'img' %>
               <% end %>
             <% end %>
           </td>
